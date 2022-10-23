@@ -6,6 +6,7 @@
   --hover-text-color: rgba(33, 150, 243, 1);
   --primary-bg-color: rgba(47, 48, 58, 1);
   --logo-text-color: rgba(0, 0, 0, 1);
+  --function-time: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -84,6 +85,7 @@ ul {
 }
 
 .nav {
+  position: relative;
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -94,6 +96,8 @@ ul {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--function-time);
 }
 
 .nav:hover,
@@ -102,6 +106,18 @@ ul {
 }
 .nav.current {
   color: var(--hover-text-color);
+}
+
+.nav.current::after {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--hover-text-color);
+  border-radius: 4px;
 }
 
 .contact-list {
@@ -125,6 +141,8 @@ ul {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--function-time);
 }
 
 .contact-header:hover,
@@ -152,6 +170,8 @@ ul {
 .icon-mail:focus {
   fill: var(--hover-text-color);
 }
+
+/* Заказать услугу */
 
 .section.page {
   padding-top: 200px;
@@ -200,6 +220,59 @@ ul {
   letter-spacing: 0.06em;
   cursor: pointer;
 }
+
+.backdrop {
+  position: fixed;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+
+  transition: opacity 250ms var(--function-time);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 528px;
+  height: 581px;
+
+  background: var(--accent-text-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.btn-modal {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.btn-close {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+
+  fill: rgba(0, 0, 0, 1);
+}
+
+/*  */
 
 .aside-text {
   display: flex;
@@ -252,6 +325,35 @@ ul {
 .desc-item > .item:not(:last-child) {
   margin-right: 30px;
 }
+
+.desc-text {
+  position: relative;
+}
+
+.desc-contain {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(47, 48, 58, 0.8);
+}
+
+.text-contain {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent-text-color);
+}
+
+/* Наша команда */
 
 .desc {
   margin-bottom: 50px;
@@ -314,6 +416,8 @@ ul {
   fill: rgba(175, 177, 184, 1);
   border-radius: 50%;
   background-color: #ffffff;
+
+  transition: fill 250ms var(--function-time);
 }
 .team-link:hover,
 .team-link:focus {
@@ -331,6 +435,8 @@ ul {
   fill: rgba(175, 177, 184, 1);
   border-radius: 4px;
   border: 1px solid #afb1b8;
+
+  transition: fill 2500ms var(--function-time), border 250ms var(--function-time);
 }
 .clients-icon:hover,
 .clients-icon:focus {
@@ -345,6 +451,8 @@ ul {
   fill: rgba(175, 177, 184, 1);
   width: 170px;
   height: 92px;
+
+  transition: fill 250ms var(--function-time);
 }
 
 .clients-link:hover,
@@ -395,6 +503,8 @@ ul {
   font-size: 14px;
   line-height: 1.7;
   letter-spacing: 0.03em;
+
+  transition: color 250ms var(--function-time);
 }
 .contact-footer:hover,
 .contact-footer:focus {
@@ -424,6 +534,8 @@ ul {
   fill: var(--accent-text-color);
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+
+  transition: background-color 250ms var(--function-time);
 }
 
 .team-link-footer:hover,
@@ -458,6 +570,9 @@ ul {
   background: #f5f4fa;
   border-radius: 4px;
   border-color: transparent;
+
+  transition: color 250ms var(--function-time), background-color 250ms var(--function-time),
+    box-shadow 250ms var(--function-time);
 }
 
 .flex-filtr {
@@ -482,6 +597,8 @@ ul {
 }
 .portfolio-card {
   display: block;
+
+  transition: box-shadow 250ms var(--function-time);
 }
 .portfolio-card:hover,
 .portfolio-card:focus {
@@ -509,4 +626,35 @@ ul {
   font-size: 16px;
   line-height: 1.9;
   letter-spacing: 0.03em;
+}
+
+.card-hiden {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-overlay {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--function-time);
+  background-color: rgba(33, 150, 243, 0.9);
+}
+
+.text-overlay {
+  position: absolute;
+  padding: 63px 24px;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--accent-text-color);
+}
+
+.portfolio-card:hover .card-overlay {
+  transform: translateY(0);
 }
