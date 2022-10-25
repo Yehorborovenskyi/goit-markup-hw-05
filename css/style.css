@@ -424,7 +424,7 @@ ul {
   border-radius: 50%;
   background-color: #ffffff;
 
-  transition: fill 250ms var(--function-time);
+  transition: fill 250ms var(--function-time), background-color 250ms var(--function-time);
 }
 .team-link:hover,
 .team-link:focus {
